@@ -25,3 +25,19 @@ html, body {
 body {
   margin-top: 60px;
 }
+
+nav ul li:hover > a{
+    color:#FFFFFF;
+}
+
+nav ul li:hover > ul {
+  display:block;
+}
+
+nav ul ul {
+  width: 100%;
+  left: 0px;
+  height: 100%;
+  min-height: 100%;
+}
+

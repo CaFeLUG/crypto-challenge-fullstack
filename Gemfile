@@ -33,7 +33,7 @@ gem 'http_accept_language'
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
-gem 'micromachine'
+gem 'aasm'
 gem 'omniauth-facebook'
 gem 'omniauth-linkedin'
 gem 'sidekiq'
@@ -47,6 +47,7 @@ gem 'local_time'
 gem "paranoia", "~> 2.2.0.pre"
 gem 'cocoon'
 gem 'mailgun_rails'
+gem 'whenever'
 
 group :development, :test do
   gem 'listen'
