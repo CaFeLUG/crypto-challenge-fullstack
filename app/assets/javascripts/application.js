@@ -12,5 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require slimscroll
+//= require toastr
+//= require strftime
+//= require momentjs
 //= require turbolinks
 //= require_tree .
