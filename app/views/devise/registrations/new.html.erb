@@ -1,26 +1,16 @@
-<h2><%= t('.sign_up') %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4><%= t('.sign_up') %></h4>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+  <div class="panel-body">
+    <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name), layout: :vertical, label_col: "col-sm-2", control_col: "col-sm-10") do |f| %>
+      <%= f.email_field :email, autofocus: true  %>
+      <%= f.password_field :password, autocomplete: "off" %>
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      <%= f.submit t('.sign_up'), class: 'btn btn-primary' %>
+    <% end %>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit t('.sign_up') %>
-  </div>
-<% end %>
-
+<br /></br />
 <%= render "devise/shared/links" %>

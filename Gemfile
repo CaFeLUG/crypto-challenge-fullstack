@@ -46,6 +46,7 @@ gem 'seedbank'
 gem 'local_time'
 gem "paranoia", "~> 2.2.0.pre"
 gem 'cocoon'
+gem 'mailgun_rails'
 
 group :development, :test do
   gem 'listen'

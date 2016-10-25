@@ -15,4 +15,13 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "toastr";
-@import "bootswatch/cerulean/bootstrap";
+@import "bootswatch/united/bootstrap";
+@import "rails_bootstrap_forms";
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin-top: 60px;
+}

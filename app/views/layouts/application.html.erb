@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CryptoChallengeFullstack</title>
+    <title>CryptoChallenge</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="row">
+      <div class="container">
+        <%= render partial: 'layouts/navbar' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="container">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

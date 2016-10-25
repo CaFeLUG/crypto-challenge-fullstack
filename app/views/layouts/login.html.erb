@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="">
+      <meta name="author" content="Sebastian A. Espindola">
+      <title>BrokerApp</title>
+      <%= stylesheet_link_tag 'application', media: 'all' %>
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+      <%= javascript_include_tag 'application' %>
+      <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="container">
+      <div class="col-md-offset-3 col-md-6">
+        <% flash.each do |type, message| %>
+          <%- next if not message.kind_of? String  or message.empty? %>
+          <div class="alert alert-warning alert-dismissible" role="alert">
+            <%= message %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="close">
+              <i class="fa fa-times"></i></button>
+            </button>
+          </div>
+        <% end %>
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>
