@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  resources :challenges
-  resources :contests
+  get 'main/index'
+  root 'main#index'
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :contests, only: [:index, :show] do
+    resources :challenges, only: [:index, :show]
+  end
+  resources :users, only: [:index, :show] do
+    resources :contests, only: :index
+  end
 end
