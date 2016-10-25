@@ -1,5 +1,14 @@
 source 'https://rubygems.org'
 
+source 'https://rails-assets.org' do
+  gem 'rails-assets-slimscroll'
+  gem 'rails-assets-summernote'
+  gem 'rails-assets-select2'
+  gem 'rails-assets-momentjs'
+  gem 'rails-assets-toastr'
+  gem 'rails-assets-strftime'
+  gem 'rails-assets-bootswatch'
+end
 
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'pg', '~> 0.18'
