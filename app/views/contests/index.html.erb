@@ -2,15 +2,13 @@
 
 <h1>Contests</h1>
 
-<table>
+<table class="table table-bordered table-hover table-stripped">
   <thead>
     <tr>
       <th>Name</th>
       <th>Begins at</th>
       <th>Ends at</th>
-      <th>Status</th>
-      <th>Rules</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -18,18 +16,14 @@
     <% @contests.each do |contest| %>
       <tr>
         <td><%= contest.name %></td>
-        <td><%= contest.begins_at %></td>
-        <td><%= contest.ends_at %></td>
-        <td><%= contest.status %></td>
-        <td><%= contest.rules %></td>
-        <td><%= link_to 'Show', contest %></td>
-        <td><%= link_to 'Edit', edit_contest_path(contest) %></td>
-        <td><%= link_to 'Destroy', contest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= contest.begins_at.in_time_zone('Buenos Aires').strftime('%d/%m/%Y %H:%M') %></td>
+        <td><%= contest.ends_at.in_time_zone('Buenos Aires').strftime('%d/%m/%Y %H:%M') %></td>
+        <%- if contest.status == 'running' %>
+          <td><%= link_to 'Show', contest %></td>
+        <%- else %>
+          <td><span class="label label-danger">Contest not started</span></td>
+        <%- end %>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Contest', new_contest_path %>

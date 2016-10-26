@@ -1,0 +1,21 @@
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+<%- @contest.challenges.each do |ch| %>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="heading<%= ch.id %>">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= ch.id %>" aria-expanded="false" aria-controls="collapse<%= ch.id %>">
+          <span><%= ch.name %><span><span class="pull-right">Score: <%= ch.score %></span>
+        </a>
+      </h4>
+    </div>
+    <div id="collapse<%= ch.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= ch.id %>">
+      <div class="panel-body">
+        <dl>
+          <dd>Description:</dd>
+          <dt><%= ch.description %></dt>
+        </dl>
+      </div>
+    </div>
+  </div>
+<%- end %>
+</div>

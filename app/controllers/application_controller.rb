@@ -20,9 +20,9 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
-    I18n.locale = http_accept_language.compatible_language_from([:es, :en])
-    if I18n.locale == 'es-419'
-      I18n.locale = :es
-    end
+    I18n.locale = http_accept_language.compatible_language_from(I18n.available_locales)
+    #if I18n.locale == 'es-419'
+    #  I18n.locale = :es
+    #end
   end
 end
