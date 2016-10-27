@@ -12,8 +12,41 @@
       <div class="panel-body">
         <dl>
           <dd>Description:</dd>
-          <dt><%= ch.description %></dt>
+          <dt><%= ch.description.html_safe %></dt>
         </dl>
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-info btn-sm"
+              data-toggle="modal"
+              data-target="#hints_modal<%= ch.id %>">Show hints
+        </button>
+        <!-- Modal -->
+        <div id="hints_modal<%= ch.id %>" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Hints</h4>
+              </div>
+              <div class="modal-body">
+                <ul>
+                  <% ch.hints.each do |hint| %>
+                    <li><%= hint.value %></li>
+                  <% end %>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <form id="solution<%= ch.id %>" class="form-inline solution-form" method="post">
+          <input type="hidden" name="challenge_id" value="<%= ch.id %>">
+          <label for="solution_input">Solution:&nbsp;</label>
+          <input id="solution_input" type="text" name="solution">
+          <input type="submit" value="Submit">
+        </form>
       </div>
     </div>
   </div>

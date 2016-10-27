@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161025195110) do
+ActiveRecord::Schema.define(version: 20161027011913) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,9 @@ ActiveRecord::Schema.define(version: 20161025195110) do
     t.text     "description"
     t.text     "payload"
     t.integer  "score"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.text     "solution_hash"
   end
 
   create_table "challenges_contests", id: false, force: :cascade do |t|

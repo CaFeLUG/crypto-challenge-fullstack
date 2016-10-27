@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_filter :set_locale
+  #before_filter :set_locale
   before_filter :authenticate_user!
 
   def get_user
@@ -21,8 +21,5 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     I18n.locale = http_accept_language.compatible_language_from(I18n.available_locales)
-    #if I18n.locale == 'es-419'
-    #  I18n.locale = :es
-    #end
   end
 end
