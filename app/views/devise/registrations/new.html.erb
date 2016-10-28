@@ -3,7 +3,7 @@
     <h4><%= t('.sign_up') %></h4>
   </div>
   <div class="panel-body">
-    <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name), layout: :vertical, label_col: "col-sm-2", control_col: "col-sm-10") do |f| %>
+    <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), layout: :vertical, label_col: "col-sm-2", control_col: "col-sm-10") do |f| %>
       <%= f.email_field :email, autofocus: true  %>
       <%= f.password_field :password, autocomplete: "off" %>
       <%= f.password_field :password_confirmation, autocomplete: "off" %>

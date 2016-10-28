@@ -60,6 +60,8 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv', '~> 2.0', require: false
+  gem 'capistrano3-puma'
+  gem 'capistrano-rails-collection'
   gem 'bullet'
   gem 'byebug'
   gem 'stackprof'

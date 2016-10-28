@@ -1,10 +1,10 @@
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-<%- @contest.challenges.each do |ch| %>
+<%- @contest.challenges.order(:name).each do |ch| %>
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="heading<%= ch.id %>">
       <h4 class="panel-title">
         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= ch.id %>" aria-expanded="false" aria-controls="collapse<%= ch.id %>">
-          <span><%= ch.name %><span><span class="pull-right">Score: <%= ch.score %></span>
+          <span><%= ch.name %></span><%= check_challenge_solved(ch, current_user) %><span class="pull-right">Score: <%= ch.score %></span>
         </a>
       </h4>
     </div>
@@ -15,7 +15,7 @@
           <dt><%= ch.description.html_safe %></dt>
         </dl>
         <!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-info btn-sm"
+        <button type="button" class="btn btn-info btn-xs"
               data-toggle="modal"
               data-target="#hints_modal<%= ch.id %>">Show hints
         </button>
@@ -35,18 +35,25 @@
                   <% end %>
                 </ul>
               </div>
-              <div class="modal-footer">
+    1          <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
         </div>
-        <form id="solution<%= ch.id %>" class="form-inline solution-form" method="post">
-          <input type="hidden" name="challenge_id" value="<%= ch.id %>">
-          <label for="solution_input">Solution:&nbsp;</label>
-          <input id="solution_input" type="text" name="solution">
-          <input type="submit" value="Submit">
-        </form>
+        <div id="challenge<%= ch.id %>">
+          <% if current_user.solutions.pluck(:challenge_id).include? ch.id %>
+            <h1 class="label label-success">Solved!</h1>
+          <% else %>
+            <form id="solution<%= ch.id %>" class="form-inline solution-form" method="post" action="/challenges/solve">
+              <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+              <input type="hidden" name="challenge[challenge_id]" value="<%= ch.id %>">
+              <label for="solution_input">Solution:&nbsp;</label>
+              <input id="solution_input" type="text" name="challenge[solution]">
+              <input type="submit" value="Submit">
+            </form>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
