@@ -1,6 +1,6 @@
 server '139.59.202.80', port: 22, roles: [:app], primary: true
 
-set :repo_url,        'https://github.com/sespindola/crypto-challenge-fulltstack.git'
+set :repo_url,        'git@github.com:sespindola/crypto-challenge-fullstack.git'
 set :application,     'crypto-challenge-fullstack'
 set :user,            'web'
 set :puma_threads,    [4, 16]
